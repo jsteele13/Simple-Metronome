@@ -1,6 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
+#define LONG_SOUND_FILENAME "metronome_click.wav"
+#define CLICK_LENGTH_MS 132
+
+#define CLICK_SOUND_FILENAME "short_metronome_click.wav"
+
 
 class ofApp : public ofBaseApp{
 
@@ -21,4 +26,5 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		ofSoundPlayer myMetronome;
 };

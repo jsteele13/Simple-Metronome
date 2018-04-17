@@ -3,6 +3,14 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+	// http://openframeworks.cc/learning/04_sound/play_a_sound/
+
+	myMetronome.load(CLICK_SOUND_FILENAME);
+	//ofTimer t;
+	while (true) {
+		myMetronome.play();
+		//t.setPeriodicEvent(1000000 - (CLICK_LENGTH_MS * 1000));
+	}
 }
 
 //--------------------------------------------------------------
