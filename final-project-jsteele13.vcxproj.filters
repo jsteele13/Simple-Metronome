@@ -31,6 +31,7 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\metronome.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -77,11 +78,13 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\metronome.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="bin\data\metronome_click.wav" />
+    <Media Include="bin\data\short_metronome_click.wav" />
   </ItemGroup>
 </Project>
