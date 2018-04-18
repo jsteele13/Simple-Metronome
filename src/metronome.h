@@ -2,9 +2,9 @@
 #include <chrono>
 #include "ofSoundPlayer.h"
 
-#define CLICK_SOUND_FILENAME "short_metronome_click.wav"
-#define LONG_SOUND_FILENAME "metronome_click.wav"
+#define LONG_SOUND_FILENAME "metronome_click.wav" // https://freesound.org/people/Druminfected/sounds/250551/
 #define CLICK_LENGTH_NS 132000000
+#define CLICK_SOUND_FILENAME "short_metronome_click.wav" 
 #define SECOND_IN_MINUTE 60
 
 class Metronome {
