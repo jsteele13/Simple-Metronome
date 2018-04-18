@@ -6,7 +6,7 @@
 Metronome::Metronome(int tempo) {
 	using namespace std::chrono;
 	myMetronome.load(CLICK_SOUND_FILENAME);
-	double waitTime = 60.0 / tempo; //time durration in milliseconds
+	double waitTime = SECOND_IN_MINUTE / tempo; //time duration in milliseconds
 
 	while (true) {
 		steady_clock::time_point t1 = steady_clock::now();

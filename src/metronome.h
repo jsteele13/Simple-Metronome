@@ -5,6 +5,7 @@
 #define CLICK_SOUND_FILENAME "short_metronome_click.wav"
 #define LONG_SOUND_FILENAME "metronome_click.wav"
 #define CLICK_LENGTH_NS 132000000
+#define SECOND_IN_MINUTE 60
 
 class Metronome {
 	public: 
