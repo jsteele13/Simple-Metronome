@@ -2,23 +2,22 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofSetWindowShape(1920, 1080);
-	ofSetWindowPosition(ofGetScreenWidth() / 2 - ofGetWidth() / 2, 0);
+
+	ofSetWindowShape(400, 500);
+	ofSetWindowPosition(0, 0);
 	ofSetBackgroundColor(0, 0, 0);
 
 	// http://braitsch.github.io/ofxDatGui/components.html#text-inputs
-
-	tempoInput = new ofxDatGuiTextInput("TEMPO (BPM)", "");
+	ofxDatGui* panel = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
+	tempoInput = panel->addTextInput("TEMPO (BPM)", "");
 	tempoInput->onTextInputEvent(this, &ofApp::onTextInputEvent);
-	tempoInput->setWidth(800, .2);
-	tempoInput->setPosition(ofGetWidth() / 2 - tempoInput->getWidth() / 2, 240);
-
-	/*ofxDatGuiInputType numbers;*/
-	//ofxDatGuiInputType numbers (NUMERIC);
-	//tempoInput->setInputType(NUMERIC);
+	tempoInput->setWidth(ofGetWidth(), .2);
+	//tempoInput->setPosition(ofGetWidth() / 2 - tempoInput->getWidth() / 2, 240);
+	tempoInput->setInputType(ofxDatGuiInputType::NUMERIC);
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 
 	Metronome myMetronome ();
+
 }
 
 //--------------------------------------------------------------
