@@ -11,10 +11,11 @@ class Metronome {
 	public: 
 		Metronome(); // tempo in bpm
 		void tick();
-		void setTempo(int tempo);
-		bool isPlaying;
+		void set_tempo(int tempo);
+		bool is_playing;
 
 	private:
 		ofSoundPlayer mySound;
-		double waitTime;
+		double wait_time;
+		std::chrono::steady_clock::time_point last_tick_time;
 };

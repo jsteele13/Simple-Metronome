@@ -23,7 +23,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	tempoInput->update();
-	if (myMetronome.isPlaying) {
+	if (myMetronome.is_playing) {
 		myMetronome.tick();
 	}
 }
@@ -35,8 +35,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
 	std::cout << e.text << std::endl;
-	myMetronome.setTempo(std::stoi(e.text));
-	myMetronome.isPlaying = true;
+	myMetronome.set_tempo(std::stoi(e.text));
+	myMetronome.is_playing = true;
 }
 
 //--------------------------------------------------------------
