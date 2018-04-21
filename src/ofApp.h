@@ -26,8 +26,13 @@ class ofApp : public ofBaseApp {
 		void gotMessage(ofMessage msg);
 
 	private:
-		ofxDatGuiTextInput* tempoInput;
+		ofxDatGuiTextInput* tempo_input;
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		ofTrueTypeFont font;
-		Metronome myMetronome;
+		Metronome my_metronome;
+
+		ofxDatGuiButton* tempo_tap;
+		void onButtonEvent(ofxDatGuiButtonEvent e);
+		ofxDatGuiLabel* tempo_output;
+		
 };

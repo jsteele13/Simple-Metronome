@@ -9,34 +9,58 @@ void ofApp::setup(){
 
 	// http://braitsch.github.io/ofxDatGui/components.html#text-inputs
 	ofxDatGui* panel = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
-	tempoInput = panel->addTextInput("TEMPO (BPM)", "");
-	tempoInput->onTextInputEvent(this, &ofApp::onTextInputEvent);
-	tempoInput->setWidth(ofGetWidth(), .2);
+
+	// METRONOME
+	tempo_input = panel->addTextInput("TEMPO (BPM)", "");
+	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
+	tempo_input->setWidth(ofGetWidth(), .2);
 	//tempoInput->setPosition(ofGetWidth() / 2 - tempoInput->getWidth() / 2, 240);
-	tempoInput->setInputType(ofxDatGuiInputType::NUMERIC);
+	tempo_input->setInputType(ofxDatGuiInputType::NUMERIC);
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 
+	tempo_tap = panel->addButton("TAP");
+	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
+	tempo_output = panel->addLabel("");
+	
 	Metronome myMetronome ();
+
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	tempoInput->update();
-	if (myMetronome.is_playing) {
-		myMetronome.tick();
+	tempo_input->update();
+	if (my_metronome.is_playing) {
+		my_metronome.tick();
 	}
+	tempo_output->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	tempoInput->draw();
+	tempo_input->draw();
+	tempo_output->draw();
 }
+
 //--------------------------------------------------------------
 void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
 	std::cout << e.text << std::endl;
-	myMetronome.set_tempo(std::stoi(e.text));
-	myMetronome.is_playing = true;
+	my_metronome.set_tempo(std::stoi(e.text));
+	my_metronome.is_playing = true;
+}
+
+//--------------------------------------------------------------
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
+{
+	cout << e.target->getLabel() << " was clicked!" << endl;
+	int tempo = my_metronome.tap();
+	if (tempo == 0) {
+		tempo_output->setLabel(tempo_output->getLabel() + "-");
+	}
+	else {
+		tempo_output->setLabel("" + tempo);
+	}
 }
 
 //--------------------------------------------------------------
