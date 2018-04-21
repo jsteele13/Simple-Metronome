@@ -17,14 +17,16 @@ void ofApp::setup(){
 	//ofxDatGuiInputType numbers (NUMERIC);
 	//tempoInput->setInputType(NUMERIC);
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
-/*
-	Metronome myMetronome (120);
-	myMetronome.startTicking();*/
+
+	Metronome myMetronome ();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	tempoInput->update();
+	if (myMetronome.isPlaying) {
+		myMetronome.tick();
+	}
 }
 
 //--------------------------------------------------------------
@@ -34,6 +36,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
 	std::cout << e.text << std::endl;
+	myMetronome.setTempo(std::stoi(e.text));
+	myMetronome.isPlaying = true;
 }
 
 //--------------------------------------------------------------

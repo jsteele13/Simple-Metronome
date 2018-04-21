@@ -9,8 +9,10 @@
 
 class Metronome {
 	public: 
-		Metronome(int tempo); // tempo in bpm
-		void startTicking();
+		Metronome(); // tempo in bpm
+		void tick();
+		void setTempo(int tempo);
+		bool isPlaying;
 
 	private:
 		ofSoundPlayer mySound;

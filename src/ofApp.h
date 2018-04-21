@@ -29,4 +29,5 @@ class ofApp : public ofBaseApp {
 		ofxDatGuiTextInput* tempoInput;
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		ofTrueTypeFont font;
+		Metronome myMetronome;
 };
