@@ -23,13 +23,15 @@
 	}
 
 	int Metronome::tap() {
+		std::cout << last_3_tempos.size() << std::endl;
 		steady_clock::time_point click_time = steady_clock::now();
-		my_sound.play();
+		//my_sound.play();
 		double elapsed = duration_cast<duration<double>>(click_time - prev_click_time).count();
 		double tempo = SECOND_IN_MINUTE / elapsed;
 		prev_click_time = click_time;
 
 		if (tempo < 40) {
+			last_3_tempos.erase(last_3_tempos.begin(), last_3_tempos.end());
 			return 0;
 		}
 

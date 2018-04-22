@@ -55,12 +55,13 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
 {
 	cout << e.target->getLabel() << " was clicked!" << endl;
 	int tempo = my_metronome.tap();
-	if (tempo == 0) {
-		tempo_output->setLabel(tempo_output->getLabel() + "-");
-	}
-	else {
-		tempo_output->setLabel("" + tempo);
-	}
+	std::cout << tempo << std::endl;
+	//if (tempo == 0) {
+	//	tempo_output->setLabel(tempo_output->getLabel() + "-");
+	//}
+	//else {
+		tempo_output->setLabel(std::to_string(tempo));
+	//}
 }
 
 //--------------------------------------------------------------
