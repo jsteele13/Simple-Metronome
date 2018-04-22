@@ -11,7 +11,7 @@ void ofApp::setup(){
 	ofxDatGui* panel = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 
-// PLAY TEMPO
+// PLAY TEMPO COMPONENTS
 	tempo_input = panel->addTextInput("TEMPO (BPM)", "");
 	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
 	tempo_input->setWidth(ofGetWidth(), .2);
@@ -20,7 +20,7 @@ void ofApp::setup(){
 	power_button = panel->addButton("PLAY");
 	panel->onButtonEvent(this, &ofApp::onButtonEvent);
 
-// CALCULATE TEMPO
+// CALCULATE TEMPO COMPONENTS
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
 	//tempo_tap->setWidth(ofGetWidth()/5);
@@ -28,16 +28,15 @@ void ofApp::setup(){
 	tempo_output = panel->addLabel("");
 	
 	Metronome myMetronome ();
-
-
-
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	tempo_input->update();
 	if (my_metronome.is_playing) {
+		tempo_input->setBackgroundColor(flash);
 		my_metronome.tick();
+		tempo_input->setBackgroundColor(original);
 	}
 	tempo_output->update();
 }

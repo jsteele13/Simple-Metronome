@@ -31,7 +31,8 @@ class ofApp : public ofBaseApp {
 
 		ofxDatGuiTextInput* tempo_input;
 		ofxDatGuiButton* power_button;
-
+		ofColor flash = ofColor(255, 102, 0);
+		ofColor original = ofColor(0, 0, 0);
 		ofxDatGuiButton* tempo_tap;
 		ofxDatGuiLabel* tempo_output;
 		
