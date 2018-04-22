@@ -22,10 +22,20 @@
 		}
 	}
 
+	std::string Metronome::toggle() {
+		is_playing = !is_playing;
+		if (is_playing) {
+			return "STOP";
+		}
+		return "PLAY";
+	}
+
 	int Metronome::tap() {
 		std::cout << last_3_tempos.size() << std::endl;
 		steady_clock::time_point click_time = steady_clock::now();
-		//my_sound.play();
+		if (!is_playing) {
+			my_sound.play();
+		}
 		double elapsed = duration_cast<duration<double>>(click_time - prev_click_time).count();
 		double tempo = SECOND_IN_MINUTE / elapsed;
 		prev_click_time = click_time;
@@ -57,4 +67,7 @@
 		return sum / last_3_tempos.size();
 	}
 
+	int Metronome::get_num_taps() {
+		return last_3_tempos.size();
+	}
 	

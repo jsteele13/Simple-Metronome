@@ -9,17 +9,23 @@ void ofApp::setup(){
 
 	// http://braitsch.github.io/ofxDatGui/components.html#text-inputs
 	ofxDatGui* panel = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
+	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 
-	// METRONOME
+// PLAY TEMPO
 	tempo_input = panel->addTextInput("TEMPO (BPM)", "");
 	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
 	tempo_input->setWidth(ofGetWidth(), .2);
-	//tempoInput->setPosition(ofGetWidth() / 2 - tempoInput->getWidth() / 2, 240);
 	tempo_input->setInputType(ofxDatGuiInputType::NUMERIC);
-	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 
+	power_button = panel->addButton("PLAY");
+	panel->onButtonEvent(this, &ofApp::onButtonEvent);
+
+// CALCULATE TEMPO
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
+	//tempo_tap->setWidth(ofGetWidth()/5);
+	tempo_tap->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+		
 	tempo_output = panel->addLabel("");
 	
 	Metronome myMetronome ();
@@ -47,21 +53,32 @@ void ofApp::draw(){
 void ofApp::onTextInputEvent(ofxDatGuiTextInputEvent e) {
 	std::cout << e.text << std::endl;
 	my_metronome.set_tempo(std::stoi(e.text));
-	my_metronome.is_playing = true;
+	if (!my_metronome.is_playing) {
+		power_button->setLabel(my_metronome.toggle());
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
 {
 	cout << e.target->getLabel() << " was clicked!" << endl;
-	int tempo = my_metronome.tap();
-	std::cout << tempo << std::endl;
-	//if (tempo == 0) {
-	//	tempo_output->setLabel(tempo_output->getLabel() + "-");
-	//}
-	//else {
-		tempo_output->setLabel(std::to_string(tempo));
-	//}
+	if (e.target == tempo_tap) {
+		int tempo = my_metronome.tap();
+		std::cout << tempo << std::endl;
+		if (tempo == 0) {
+			std::string click_marks = "";
+			for (int i = 0; i < my_metronome.get_num_taps() + 1; i++) {
+				click_marks += "-";
+			}
+			tempo_output->setLabel(click_marks);
+		}
+		else {
+			tempo_output->setLabel(std::to_string(tempo));
+		}
+	}
+	else {
+		e.target->setLabel(my_metronome.toggle());
+	}
 }
 
 //--------------------------------------------------------------

@@ -16,8 +16,10 @@ class Metronome {
 		void tick();
 		void set_tempo(int tempo);
 		bool is_playing;
+		std::string toggle();
 
 		int tap();
+		int get_num_taps();
 
 	private:
 		ofSoundPlayer my_sound;
