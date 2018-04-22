@@ -24,7 +24,6 @@ void ofApp::setup(){
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
 	//tempo_tap->setWidth(ofGetWidth()/5);
-	tempo_tap->setLabelAlignment(ofxDatGuiAlignment::CENTER);
 		
 	tempo_output = panel->addLabel("");
 	
