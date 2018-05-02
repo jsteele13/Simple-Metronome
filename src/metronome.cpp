@@ -6,6 +6,7 @@
 
 	Metronome::Metronome() {
 		my_sound.load(CLICK_SOUND_FILENAME);
+		my_pitch.load(A440_FILENAME);
 		wait_time = 0;
 	}
 	void Metronome::set_tempo(int tempo) {
@@ -75,3 +76,17 @@
 		return last_3_tempos.size();
 	}
 	
+
+	bool Metronome::is_tuning() {
+		return my_pitch.isPlaying();
+	}
+
+	void Metronome::toggle_tuning() {
+		if (is_tuning()) {
+			my_pitch.stop();
+		}
+		else {
+			my_pitch.play();
+		}
+	}
+

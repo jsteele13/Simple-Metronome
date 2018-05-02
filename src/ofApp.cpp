@@ -4,7 +4,7 @@
 void ofApp::setup(){
 
 	//ofSetWindowShape(400, 500);
-	ofSetWindowShape(275, 300);
+	ofSetWindowShape(275, 225);
 	//ofSetWindowShape(1920, 1080);
 	ofSetWindowPosition(0, 0);
 	ofSetBackgroundColor(0, 0, 0);
@@ -16,21 +16,21 @@ void ofApp::setup(){
 	panel->setTheme(new ofxDatGuiCustomFontSize());
 
 // PLAY TEMPO COMPONENTS
+	power_button = panel->addToggle("POWER");
+	power_button->onToggleEvent(this, &ofApp::onToggleEvent);
+
 	tempo_input = panel->addTextInput("TEMPO", "");
 	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
 	tempo_input->setWidth(ofGetWidth(), .2);
 	tempo_input->setInputType(ofxDatGuiInputType::NUMERIC);
 
-	power_button = panel->addToggle("POWER");
-	//myToggle = new ofxDatGuiToggle("POWER");
-	power_button->onToggleEvent(this, &ofApp::onToggleEvent);
-	//myToggle->setWidth(200);
-	power_button->setChecked(false);	
-
 // CALCULATE TEMPO COMPONENTS
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
-	//tempo_tap->setWidth(ofGetWidth()/5);
+
+// TUNING COMPONENTS
+	tuning_a = panel->addToggle("A 440");
+	tuning_a->onToggleEvent(this, &ofApp::onToggleEvent);
 	
 	Metronome myMetronome ();
 }
@@ -84,6 +84,10 @@ void ofApp::play_tempo(std::string tempo) {
 			my_metronome.set_tempo(input);
 		}
 	}
+	else {
+		my_metronome.set_tempo(0);
+	}
+
 	if (!my_metronome.is_playing) {
 		my_metronome.toggle();
 		power_button->setChecked(true);
@@ -121,9 +125,14 @@ void ofApp::tapped() {
 void ofApp::onToggleEvent(ofxDatGuiToggleEvent e)
 {
 	cout << e.target->getLabel() << " checked = " << e.checked << endl;
-	bool toggled = my_metronome.toggle();
-	if (!toggled) {
-		power_button->setChecked(false);
+	if (e.target == power_button) {
+		bool toggled = my_metronome.toggle();
+		if (!toggled) {
+			power_button->setChecked(false);
+		}
+	}
+	else if (e.target == tuning_a) {
+		my_metronome.toggle_tuning();
 	}
 	
 }

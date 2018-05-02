@@ -44,6 +44,8 @@ class ofApp : public ofBaseApp {
 
 		ofxDatGuiButton* tempo_tap;
 		void tapped();
+
+		ofxDatGuiToggle* tuning_a;
 		
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		void onButtonEvent(ofxDatGuiButtonEvent e);
