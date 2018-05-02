@@ -44,19 +44,18 @@ class ofApp : public ofBaseApp {
 
 		ofxDatGuiButton* tempo_tap;
 		void tapped();
-		ofxDatGuiLabel* tempo_output;
 		
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		void onButtonEvent(ofxDatGuiButtonEvent e);
 		void onToggleEvent(ofxDatGuiToggleEvent e);
 };
 
-//class ofxDatGuiCustomFontSize : public ofxDatGuiTheme {
-//public:
-//
-//	ofxDatGuiCustomFontSize()
-//	{
-//		font.size = 15;
-//		init();
-//	}
-//};
+class ofxDatGuiCustomFontSize : public ofxDatGuiTheme {
+public:
+
+	ofxDatGuiCustomFontSize()
+	{
+		font.size = 12;
+		init();
+	}
+};

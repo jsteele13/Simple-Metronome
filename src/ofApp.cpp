@@ -4,7 +4,8 @@
 void ofApp::setup(){
 
 	//ofSetWindowShape(400, 500);
-	ofSetWindowShape(1920, 1080);
+	ofSetWindowShape(275, 300);
+	//ofSetWindowShape(1920, 1080);
 	ofSetWindowPosition(0, 0);
 	ofSetBackgroundColor(0, 0, 0);
 
@@ -12,18 +13,17 @@ void ofApp::setup(){
 	ofxDatGui* panel = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 	//font.load("ofxbraitsch/fonts/Verdana.ttf", 120);
-	//panel->setTheme(new ofxDatGuiCustomFontSize());
+	panel->setTheme(new ofxDatGuiCustomFontSize());
 
 // PLAY TEMPO COMPONENTS
-	tempo_input = panel->addTextInput("TEMPO (BPM)", "");
+	tempo_input = panel->addTextInput("TEMPO", "");
 	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
-	tempo_input->setWidth(ofGetWidth() - 26, .2);
+	tempo_input->setWidth(ofGetWidth(), .2);
 	tempo_input->setInputType(ofxDatGuiInputType::NUMERIC);
 
 	power_button = panel->addToggle("POWER");
 	//myToggle = new ofxDatGuiToggle("POWER");
 	power_button->onToggleEvent(this, &ofApp::onToggleEvent);
-	//myToggle->setPosition(600, 600);
 	//myToggle->setWidth(200);
 	power_button->setChecked(false);	
 
@@ -31,7 +31,6 @@ void ofApp::setup(){
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
 	//tempo_tap->setWidth(ofGetWidth()/5);
-	tempo_output = panel->addLabel("");
 	
 	Metronome myMetronome ();
 }
@@ -46,13 +45,11 @@ void ofApp::update(){
 	if (!my_metronome.is_playing) {
 		power_button->setBackgroundColor(original);
 	}
-	tempo_output->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	tempo_input->draw();
-	tempo_output->draw();
 }
 
 //--------------------------------------------------------------
