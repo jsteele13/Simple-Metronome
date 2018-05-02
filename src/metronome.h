@@ -7,16 +7,18 @@
 #define CLICK_SOUND_FILENAME "short_metronome_click.wav" 
 #define SECOND_IN_MINUTE 60.0
 
+
 using namespace std::chrono;
 
 class Metronome {
 	public: 
-		Metronome(); // tempo in bpm
+		Metronome(); 
 
 		void tick();
 		void set_tempo(int tempo);
 		bool is_playing;
-		std::string toggle();
+		bool toggle();
+		steady_clock::time_point get_tick_time();
 
 		int tap();
 		int get_num_taps();

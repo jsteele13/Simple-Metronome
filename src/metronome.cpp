@@ -6,6 +6,7 @@
 
 	Metronome::Metronome() {
 		my_sound.load(CLICK_SOUND_FILENAME);
+		wait_time = 0;
 	}
 	void Metronome::set_tempo(int tempo) {
 		wait_time = SECOND_IN_MINUTE / tempo; //time duration in milliseconds
@@ -21,13 +22,16 @@
 			}
 		}
 	}
+	steady_clock::time_point Metronome::get_tick_time() {
+		return tick_time;
+	}
 
-	std::string Metronome::toggle() {
-		is_playing = !is_playing;
-		if (is_playing) {
-			return "STOP";
+	bool Metronome::toggle() {
+		if (wait_time != 0) {
+			is_playing = !is_playing;
+			return true;
 		}
-		return "PLAY";
+		return false;
 	}
 
 	int Metronome::tap() {

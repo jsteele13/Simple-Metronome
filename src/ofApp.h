@@ -4,6 +4,11 @@
 #include "metronome.h"
 #include "ofxDatGui.h"
 #include <string>
+#include <chrono>
+
+#define FLASH_LENGTH .132
+#define MIN_INPUT 40
+#define MAX_INPUT 220
 
 
 class ofApp : public ofBaseApp {
@@ -30,12 +35,28 @@ class ofApp : public ofBaseApp {
 		Metronome my_metronome;
 
 		ofxDatGuiTextInput* tempo_input;
-		ofxDatGuiButton* power_button;
+		ofxDatGuiToggle* power_button;
+		void play_tempo(std::string tempo);
+
+		void draw_flash(ofxDatGuiComponent* comp);
 		ofColor flash = ofColor(255, 102, 0);
 		ofColor original = ofColor(0, 0, 0);
+
 		ofxDatGuiButton* tempo_tap;
+		void tapped();
 		ofxDatGuiLabel* tempo_output;
 		
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		void onButtonEvent(ofxDatGuiButtonEvent e);
+		void onToggleEvent(ofxDatGuiToggleEvent e);
 };
+
+//class ofxDatGuiCustomFontSize : public ofxDatGuiTheme {
+//public:
+//
+//	ofxDatGuiCustomFontSize()
+//	{
+//		font.size = 15;
+//		init();
+//	}
+//};
