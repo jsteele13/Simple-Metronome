@@ -91,11 +91,11 @@ void ofApp::play_tempo(std::string tempo) {
 		int input = std::stoi(tempo);
 		if (input < MIN_TEMPO) {
 			tempo_input->setText(std::to_string(MIN_TEMPO));
-			my_metronome.set_tempo(MIN_INPUT);
+			my_metronome.set_tempo(MIN_TEMPO);
 		}
 		else if (input > MAX_TEMPO) {
 			tempo_input->setText(std::to_string(MAX_TEMPO));
-			my_metronome.set_tempo(MAX_INPUT);
+			my_metronome.set_tempo(MAX_TEMPO);
 		}
 		else {
 			my_metronome.set_tempo(input);

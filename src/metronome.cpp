@@ -5,8 +5,9 @@
 
 
 	Metronome::Metronome() {
-		my_sound.load(CLICK_SOUND_FILENAME);
+		my_click.load(CLICK_SOUND_FILENAME);
 		my_pitch.load(A440_FILENAME);
+		prev_click_time = steady_clock::now();
 		wait_time = 0;
 	}
 
@@ -15,7 +16,7 @@
 			steady_clock::time_point t2 = steady_clock::now();
 			if (duration_cast<duration<double>>(t2 - tick_time).count() >= wait_time) {
 				tick_time = steady_clock::now();
-				my_sound.play();
+				my_click.play();
 			}
 		}
 	}
@@ -44,7 +45,7 @@
 		std::cout << last_tempos.size() << std::endl;
 		steady_clock::time_point click_time = steady_clock::now();
 		if (!is_playing) {
-			my_sound.play();
+			my_click.play();
 		}
 		double elapsed = duration_cast<duration<double>>(click_time - prev_click_time).count();
 		double tempo = SECOND_IN_MINUTE / elapsed;

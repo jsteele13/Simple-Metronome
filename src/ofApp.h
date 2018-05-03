@@ -32,19 +32,23 @@ class ofApp : public ofBaseApp {
 		ofTrueTypeFont font;
 		Metronome my_metronome;
 
+	// PLAY TEMPO
 		ofxDatGuiTextInput* tempo_input;
 		ofxDatGuiToggle* power_button;
 		void play_tempo(std::string tempo);
 
+	// FLASHING
 		void draw_flash(ofxDatGuiComponent* comp);
 		ofColor flash = ofColor(255, 102, 0);
 		ofColor original = ofColor(0, 0, 0);
 
+	// TAP TEMPO
 		ofxDatGuiButton* tempo_tap;
 		void tapped();
 
+	// TUNE
 		ofxDatGuiToggle* tuning_a;
-		
+	
 		void onTextInputEvent(ofxDatGuiTextInputEvent e);
 		void onButtonEvent(ofxDatGuiButtonEvent e);
 		void onToggleEvent(ofxDatGuiToggleEvent e);
