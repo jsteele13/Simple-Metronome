@@ -10,8 +10,9 @@ This project is a simple openFrameworks **metronome** application. Similar to a 
         + *ofxDatGuiTheme.h - Line 178:* `float height = 45.0f;`  
     + Changes button events to activate on press instead of realease. 
         + *ofxDatGuiButton.h - Line 76:* `void onMousePress(ofPoint m)`  
-        + *ofxDatGuiButton.h - Line 79:* `ofxDatGuiComponent::onMousePress(m);`  
-5) Ta-da!
+        + *ofxDatGuiButton.h - Line 79:* `ofxDatGuiComponent::onMousePress(m);`
+5) Copy the *data* folder in the project directory into the *bin* folder. This creates the correct filepaths for the program.
+6) Ta-da! You're ready to go :)
       
 ## Running Tests
 
