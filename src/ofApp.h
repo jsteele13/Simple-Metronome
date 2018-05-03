@@ -30,30 +30,31 @@ class ofApp : public ofBaseApp {
 
 	private:
 		ofTrueTypeFont font;
-		Metronome my_metronome;
+		Metronome my_metronome; 
 
 	// PLAY TEMPO
-		ofxDatGuiTextInput* tempo_input;
-		ofxDatGuiToggle* power_button;
-		void play_tempo(std::string tempo);
+		ofxDatGuiTextInput* tempo_input; // textbox for specification of numeric tempo
+		ofxDatGuiToggle* power_button; // toggle button for user to turn metronome on and off
+		void play_tempo(std::string tempo);  // plays metronome at tempo
 
 	// FLASHING
-		void draw_flash(ofxDatGuiComponent* comp);
-		ofColor flash = ofColor(255, 102, 0);
-		ofColor original = ofColor(0, 0, 0);
+		void draw_flash(ofxDatGuiComponent* comp); // changes background color depending on time since last click
+		ofColor flash = ofColor(255, 102, 0); // orange flash color
+		ofColor original = ofColor(0, 0, 0); // original black background color
 
 	// TAP TEMPO
-		ofxDatGuiButton* tempo_tap;
-		void tapped();
+		ofxDatGuiButton* tempo_tap; // button component for user to tap tempo
+		void tapped(); // called after a tap, calculates then displays dashes dashes or tempo
 
 	// TUNE
-		ofxDatGuiToggle* tuning_a;
+		ofxDatGuiToggle* tuning_a; // toggle button to turn on and off the tuning A
 	
-		void onTextInputEvent(ofxDatGuiTextInputEvent e);
+		void onTextInputEvent(ofxDatGuiTextInputEvent e); 
 		void onButtonEvent(ofxDatGuiButtonEvent e);
 		void onToggleEvent(ofxDatGuiToggleEvent e);
 };
 
+// changes font size to custom setting
 class ofxDatGuiCustomFontSize : public ofxDatGuiTheme {
 public:
 
