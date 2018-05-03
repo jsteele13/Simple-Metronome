@@ -1,7 +1,7 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup() {
 
 	ofSetWindowShape(275, 225);
 	ofSetWindowPosition(0, 0);
@@ -11,7 +11,7 @@ void ofApp::setup(){
 	font.load("ofxbraitsch/fonts/Verdana.ttf", 24);
 	panel->setTheme(new ofxDatGuiCustomFontSize());
 
-// PLAY TEMPO COMPONENTS
+	// PLAY TEMPO COMPONENTS
 	power_button = panel->addToggle("POWER");
 	power_button->onToggleEvent(this, &ofApp::onToggleEvent);
 
@@ -21,19 +21,19 @@ void ofApp::setup(){
 	tempo_input->onTextInputEvent(this, &ofApp::onTextInputEvent);
 
 
-// TAP TEMPO COMPONENTS
+	// TAP TEMPO COMPONENTS
 	tempo_tap = panel->addButton("TAP");
 	tempo_tap->onButtonEvent(this, &ofApp::onButtonEvent);
 
-// TUNING COMPONENTS
+	// TUNING COMPONENTS
 	tuning_a = panel->addToggle("A 440");
 	tuning_a->onToggleEvent(this, &ofApp::onToggleEvent);
-	
-	Metronome myMetronome ();
+
+	Metronome myMetronome();
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update() {
 	tempo_input->update();
 	if (my_metronome.get_is_playing()) {
 		draw_flash(power_button);
@@ -45,7 +45,7 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw() {
 	tempo_input->draw();
 }
 
@@ -118,7 +118,6 @@ void ofApp::tapped() {
 		power_button->setChecked(false);
 	}
 	int tempo = my_metronome.tap();
-	std::cout << tempo << std::endl;
 	if (tempo == 0) {
 		std::string click_marks = "";
 		for (int i = 0; i < my_metronome.get_num_taps() + 1; i++) {
@@ -133,7 +132,7 @@ void ofApp::tapped() {
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+void ofApp::keyPressed(int key) {
 	if (key == ' ') {
 		tapped();
 	}
@@ -143,51 +142,51 @@ void ofApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
+void ofApp::keyReleased(int key) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
+void ofApp::mouseEntered(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
+void ofApp::mouseExited(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo) {
 
 }
