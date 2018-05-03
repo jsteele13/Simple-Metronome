@@ -14,11 +14,9 @@ This project is a simple openFrameworks **metronome** application. Similar to a 
 5) Copy the *data* folder in the project directory into the *bin* folder. This creates the correct filepaths for the program.
 6) Ta-da! You're ready to go :)
       
-## Running Tests
-
 ## Author
-**Jennifer Steele** is a freshman student in Computer Science at the University of Illinois at Urbana-Champaign
+**Jennifer Steele** is a freshman student in Computer Science at the University of Illinois at Urbana-Champaign.
 
 ## Acknowledgements
-*Stephen Braitsch* - writing and maintaining the well-documented ofxDatGui library  
+*Stephen Braitsch* - writing and maintaining the well-documented [ofxDatGui](https://braitsch.github.io/ofxDatGui/) library  
 *MetroTimer iPhone App* - Stylistic and functional inspiration
