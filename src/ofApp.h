@@ -7,9 +7,7 @@
 #include <chrono>
 
 #define FLASH_LENGTH .132
-#define MIN_INPUT 40
-#define MAX_INPUT 220
-
+#define FONT_SIZE 12
 
 class ofApp : public ofBaseApp {
 
@@ -57,7 +55,7 @@ public:
 
 	ofxDatGuiCustomFontSize()
 	{
-		font.size = 12;
+		font.size = FONT_SIZE;
 		init();
 	}
 };
